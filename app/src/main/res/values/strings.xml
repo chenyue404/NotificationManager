@@ -4,7 +4,14 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
     <string name="no_read_notification_permission">No read notification permissions</string>
-    <string name="rules">rules</string>
-    <string name="intercepted">intercepted</string>
-    <string name="system_log">system log</string>
+    <string name="rules">Rules</string>
+    <string name="intercepted">Intercepted</string>
+    <string name="system_log">System log</string>
+    <string name="title_activity_rule_edit">RuleEditActivity</string>
+    <string name="Name">Name</string>
+    <string name="Black_List">Black List</string>
+    <string name="Key_words">Key Words</string>
+    <string name="segmentation_by">(segmentation by ,)</string>
+    <string name="Edit_Rule">Edit Rule</string>
+    <string name="Save">Save</string>
 </resources>

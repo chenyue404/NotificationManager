@@ -3,6 +3,7 @@ package com.chenyue404.notificationmanager.utils;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -11,7 +12,9 @@ import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 public class CommonUtils {
 
@@ -56,6 +59,13 @@ public class CommonUtils {
             e.printStackTrace();
             return ContextCompat.getDrawable(context, android.R.drawable.sym_def_app_icon);
         }
+    }
+
+    public List<ApplicationInfo> getInstallAppInfo(Context mContext) {
+        PackageManager mypm = mContext.getPackageManager();
+        List<ApplicationInfo> appInfoList = mypm.getInstalledApplications(PackageManager.GET_UNINSTALLED_PACKAGES);
+        Collections.sort(appInfoList, new ApplicationInfo.DisplayNameComparator(mypm));// 排序
+        return appInfoList;
     }
 
 }

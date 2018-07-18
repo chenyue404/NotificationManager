@@ -11,10 +11,11 @@ public class MyApp extends Application {
 
     private Context mContext;
     private DaoSession daoSession;
-
+    private static MyApp sInstance;
     @Override
     public void onCreate() {
         super.onCreate();
+        sInstance = this;
         initGreenDao();
     }
 
@@ -28,4 +29,9 @@ public class MyApp extends Application {
     public DaoSession getDaoSession() {
         return daoSession;
     }
+
+    public static MyApp getInstance() {
+        return sInstance;
+    }
+
 }

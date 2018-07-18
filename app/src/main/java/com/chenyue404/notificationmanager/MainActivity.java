@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private NotificationListFragment notificationListFragment;
+    private RulesFragment rulesFragment;
     private View rootView;
 
     @Override
@@ -44,7 +45,13 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         rootView = findViewById(android.R.id.content);
+        rulesFragment = new RulesFragment();
         notificationListFragment = new NotificationListFragment();
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.layout_content, rulesFragment);
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -88,7 +95,8 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         if (id == R.id.nav_rules) {
-            // Handle the camera action
+            fragmentTransaction.replace(R.id.layout_content, rulesFragment);
+            fragmentTransaction.commit();
         } else if (id == R.id.nav_intercepted) {
             fragmentTransaction.replace(R.id.layout_content, notificationListFragment);
             fragmentTransaction.commit();
