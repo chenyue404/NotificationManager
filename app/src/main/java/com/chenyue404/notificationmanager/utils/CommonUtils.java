@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.provider.Settings;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 
 import java.text.SimpleDateFormat;
@@ -34,7 +37,7 @@ public class CommonUtils {
         return format.format(date);
     }
 
-    public static String getApplicationNameByPackageName(Context context, String packageName) {
+    public static String getAppName(Context context, String packageName) {
         PackageManager pm = context.getPackageManager();
         String Name;
         try {
@@ -43,6 +46,16 @@ public class CommonUtils {
             Name = "";
         }
         return Name;
+    }
+
+    public static Drawable getAppIcon(Context context, String packageName) {
+        PackageManager pm = context.getPackageManager();
+        try {
+            return pm.getApplicationIcon(packageName);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return ContextCompat.getDrawable(context, android.R.drawable.sym_def_app_icon);
+        }
     }
 
 }

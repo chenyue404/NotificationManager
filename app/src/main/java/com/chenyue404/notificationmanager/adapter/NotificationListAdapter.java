@@ -7,11 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chenyue404.notificationmanager.R;
 import com.chenyue404.notificationmanager.bean.NotificationBean;
 import com.chenyue404.notificationmanager.utils.CommonUtils;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.ArrayList;
 
@@ -39,6 +41,7 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
         holder.tv_title.setText(notificationBean.getTitle());
         holder.tv_content.setText(notificationBean.getText());
         holder.tv_time.setText(CommonUtils.getTimeStr(notificationBean.getPostTime()));
+        holder.sdv_icon.setImageDrawable(CommonUtils.getAppIcon(mContext, notificationBean.getPackageName()));
     }
 
     @Override
@@ -53,12 +56,14 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         public TextView tv_title, tv_content, tv_time;
+        public ImageView sdv_icon;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             tv_title = itemView.findViewById(R.id.tv_title);
             tv_content = itemView.findViewById(R.id.tv_content);
             tv_time = itemView.findViewById(R.id.tv_time);
+            sdv_icon = itemView.findViewById(R.id.sdv_icon);
         }
     }
 }

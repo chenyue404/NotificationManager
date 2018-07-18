@@ -17,14 +17,16 @@ public class NotificationBean {
     @Id(autoincrement = true)
     private Long id;
     private Long postTime;
-    private String title, text;
+    private String title, text, packageName;
 
-    @Generated(hash = 2091058283)
-    public NotificationBean(Long id, Long postTime, String title, String text) {
+    @Generated(hash = 1280954529)
+    public NotificationBean(Long id, Long postTime, String title, String text,
+            String packageName) {
         this.id = id;
         this.postTime = postTime;
         this.title = title;
         this.text = text;
+        this.packageName = packageName;
     }
 
     @Generated(hash = 1804399548)
@@ -61,5 +63,13 @@ public class NotificationBean {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
     }
 }

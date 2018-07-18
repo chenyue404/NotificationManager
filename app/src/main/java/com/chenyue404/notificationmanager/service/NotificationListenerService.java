@@ -48,8 +48,10 @@ public class NotificationListenerService extends android.service.notification.No
         notificationBean.setPostTime(sbn.getPostTime());
         String title = notification.extras.getString(Notification.EXTRA_TITLE);
         String text = notification.extras.getString(Notification.EXTRA_TEXT);
+        String packageName = sbn.getPackageName();
         notificationBean.setText(text);
         notificationBean.setTitle(title);
+        notificationBean.setPackageName(packageName);
 
         notificationBeanDao.insert(notificationBean);
     }
